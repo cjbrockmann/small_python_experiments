@@ -12,4 +12,18 @@ Hierzu nur einfach "python mainConsole.py" in einer Konsole eingeben.
 
 Hierzu nur einfach "python mainGui.py" in einer Konsole eingeben. 
 
+## FastAPI mit Python 
 
+In der Konsole die Datei python/apiStart.bat ausführen.
+
+## React-Frontend 
+
+Im Projekt ist dein React-Frontend im Ordner react.
+
+So startest du es:
+
+In den Frontend-Ordner wechseln
+cd react
+
+Dev-Server starten
+npm run dev
