@@ -5,7 +5,7 @@
 # ============================================================
 
 class ParkhausPresenter:
-    def __init__(self, model, view):
+    def __init__(self, model, view=None):
         self.model = model
         self.ui = view
 
