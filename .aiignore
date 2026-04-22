@@ -1,19 +1,14 @@
-# Dependencies
+# Dependencies (überall, z. B. react/node_modules)
 node_modules/
-react/node_modules/
 
-# Build artifacts
+# Build-Artefakte
 dist/
-react/dist/
 build/
 
-# Python cache
+# Python
 __pycache__/
-**/__pycache__/
 *.pyc
 *.pyo
-
-# Python tooling cache
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -21,9 +16,10 @@ __pycache__/
 # Virtual environments
 .venv/
 venv/
+.env/
 env/
 
-# Logs and OS noise
+# Logs & OS
 *.log
 .DS_Store
 Thumbs.db
