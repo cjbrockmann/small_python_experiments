@@ -15,6 +15,7 @@ Hierzu nur einfach "python mainGui.py" in einer Konsole eingeben.
 ## FastAPI mit Python 
 
 In der Konsole die Datei python/apiStart.bat ausführen.
+- Swagger ist zu finden in http://localhost:8000/docs 
 
 ## React-Frontend 
 
