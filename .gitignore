@@ -1,11 +1,31 @@
 # Bytecode
 __pycache__/
+**/__pycache__/
 *.pyc
 *.pyo
 
 # Virtual environments
 venv/
 .env/
+.venv/
+env/
+
+# Frontend dependencies and builds
+node_modules/
+reactFrontEnd/node_modules/
+dist/
+reactFrontEnd/dist/
+build/
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
 
 # IDE
 .vscode/

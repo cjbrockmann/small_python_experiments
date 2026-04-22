@@ -1,0 +1,126 @@
+.app {
+  width: min(1100px, 95vw);
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.app-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  margin: 0 0 6px;
+  font-size: 2rem;
+}
+
+.app-header p {
+  margin: 0;
+  color: #5f6368;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: end;
+  background: #f5f7fa;
+  border: 1px solid #d8dee4;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.control-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.control-group label {
+  font-weight: 600;
+}
+
+.control-group select,
+.control-group button,
+.platz button {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #a6afb9;
+  background: #fff;
+  font-size: 0.95rem;
+}
+
+.control-group button,
+.platz button {
+  cursor: pointer;
+}
+
+.control-group button:disabled,
+.platz button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.stats {
+  display: flex;
+  gap: 14px;
+  font-weight: 600;
+}
+
+.status,
+.error {
+  margin: 12px 0 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.status {
+  background: #e6f7ec;
+  border: 1px solid #94d3a2;
+  color: #1f6b31;
+}
+
+.error {
+  background: #fdecec;
+  border: 1px solid #ef9a9a;
+  color: #8a1c1c;
+}
+
+.grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.platz {
+  border: 1px solid #c9d1d9;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: left;
+}
+
+.platz h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.platz p {
+  margin: 0 0 4px;
+}
+
+.platz.frei {
+  background: #f5fff6;
+  border-color: #bce6c4;
+}
+
+.platz.belegt {
+  background: #fff8ef;
+  border-color: #f0d2ad;
+}
+
+.platz button {
+  margin-top: 8px;
+}

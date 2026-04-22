@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+react/node_modules/
+
+# Build artifacts
+dist/
+react/dist/
+build/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Python tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs and OS noise
+*.log
+.DS_Store
+Thumbs.db
