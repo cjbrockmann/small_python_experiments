@@ -108,7 +108,7 @@ class PresentationGui:
                 text="X",
                 fg="red",
                 width=3,
-                command=lambda p=i+1: self.presenter.handle_ausfahrt(p)
+                command=lambda p=i+1: self.on_ausfahrt_platz(p)
             )
             btn.pack(side="right")
 
@@ -124,7 +124,9 @@ class PresentationGui:
 
     def on_einfahrt(self):
         typ = self.entry.get().strip() or "PKW"
-        self.presenter.handle_einfahrt(typ)
+        result = self.presenter.handle_einfahrt(typ)
+        self.message(result["message"], result["color"])
+        self.refresh_gui(result["plaetze"])
         self.entry.set("PKW")   # Combobox zurücksetzen
 
     def on_ausfahrt(self):
@@ -133,10 +135,17 @@ class PresentationGui:
         except ValueError:
             self.message("Bitte eine gültige Zahl eingeben!", "rot")
             return
-        self.presenter.handle_ausfahrt(platz)
+        result = self.presenter.handle_ausfahrt(platz)
+        self.message(result["message"], result["color"])
+        self.refresh_gui(result["plaetze"])
 
     def on_refresh(self):
-        self.presenter.refresh()
+        self.refresh_gui(self.presenter.refresh())
+
+    def on_ausfahrt_platz(self, platz):
+        result = self.presenter.handle_ausfahrt(platz)
+        self.message(result["message"], result["color"])
+        self.refresh_gui(result["plaetze"])
 
     def message_timed(self, text, color=None, timeout_ms=2000):
         if self._status_hide_id is not None:

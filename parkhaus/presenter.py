@@ -19,7 +19,8 @@ class ParkhausPresenter:
 
             if wahl == "1":
                 typ = self.ui.ask("Fahrzeugtyp: ").strip() or "PKW"
-                self.handle_einfahrt(typ)
+                result = self.handle_einfahrt(typ)
+                self._show_console_result(result)
 
             elif wahl == "2":
                 try:
@@ -27,7 +28,8 @@ class ParkhausPresenter:
                 except ValueError:
                     self.ui.message("Ungültige Eingabe!", "rot")
                     continue
-                self.handle_ausfahrt(platz)
+                result = self.handle_ausfahrt(platz)
+                self._show_console_result(result)
 
             elif wahl == "3":
                 self.ui.ask("Weiter mit ENTER...")
@@ -52,21 +54,53 @@ class ParkhausPresenter:
     def handle_einfahrt(self, typ):
         result = self.model.einfahrt(typ)
         if result is None:
-            self.ui.message("Keine freien Plätze!", "rot")
-        else:
-            platz, auto = result
-            self.ui.message(f"Einfahrt: {auto} auf Platz {platz+1}", "gruen")
-        self.ui.refresh_gui(self.model.plaetze)
+            return {
+                "status": "error",
+                "message": "Keine freien Plätze!",
+                "color": "rot",
+                "plaetze": self.model.plaetze
+            }
+
+        platz, auto = result
+        return {
+            "status": "ok",
+            "message": f"Einfahrt: {auto} auf Platz {platz+1}",
+            "color": "gruen",
+            "platz": platz + 1,
+            "auto_id": auto.id,
+            "fahrzeugtyp": auto.typ,
+            "plaetze": self.model.plaetze
+        }
 
     def handle_ausfahrt(self, platz):
         result = self.model.ausfahrt(platz)
         if result == "ungueltig":
-            self.ui.message("Ungültiger Platz!", "rot")
-        elif result == "frei":
-            self.ui.message("Dieser Platz ist bereits frei!", "rot")
-        else:
-            self.ui.message(f"Ausfahrt: {result}", "gruen")
-        self.ui.refresh_gui(self.model.plaetze)
+            return {
+                "status": "error",
+                "message": "Ungültiger Platz!",
+                "color": "rot",
+                "plaetze": self.model.plaetze
+            }
+        if result == "frei":
+            return {
+                "status": "error",
+                "message": "Dieser Platz ist bereits frei!",
+                "color": "rot",
+                "plaetze": self.model.plaetze
+            }
+
+        return {
+            "status": "ok",
+            "message": f"Ausfahrt: {result}",
+            "color": "gruen",
+            "auto_id": result.id,
+            "fahrzeugtyp": result.typ,
+            "plaetze": self.model.plaetze
+        }
 
     def refresh(self):
+        return self.model.plaetze
+
+    def _show_console_result(self, result):
+        self.ui.message(result["message"], result["color"])
         self.ui.refresh_gui(self.model.plaetze)
